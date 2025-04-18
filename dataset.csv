@@ -1,0 +1,13 @@
+ID,Age,Income,Student,CreditRating,BuysComputer
+1,25,High,No,Fair,No
+2,30,High,No,Excellent,No
+3,28,Medium,No,Fair,Yes
+4,40,Low,Yes,Fair,Yes
+5,35,Low,Yes,Excellent,No
+6,38,Low,Yes,Excellent,Yes
+7,28,Medium,No,Fair,Yes
+8,45,High,Yes,Fair,No
+9,30,Low,Yes,Fair,Yes
+10,35,Medium,Yes,Excellent,Yes
+11,40,Medium,No,Excellent,Yes
+12,28,High,Yes,Fair,Yes
