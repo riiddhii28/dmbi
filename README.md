@@ -28,3 +28,5 @@
 
 - For all classification and clustering tasks, **dataset.csv** is used. (a simple dataset with columns: ID, Age, Income, Student, CreditRating, BuysComputer).
 - For **Apriori** and **FP-Growth**, **new_dataset.csv** dataset containing transactional data for association rule mining is used.
+
+pip install numpy pandas (imp)
