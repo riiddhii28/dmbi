@@ -54,7 +54,7 @@ def build_tree(dataset, headers):
     labels = [row[-1] for row in dataset]
     if labels.count(labels[0]) == len(labels):
         return labels[0]
-    if len(dataset[0]) == 1:
+    if len(headers) == 1:  # Only target left
         return max(set(labels), key=labels.count)
 
     best_idx = best_feature(dataset)
@@ -64,15 +64,37 @@ def build_tree(dataset, headers):
     values = unique_vals(dataset, best_idx)
     for val in values:
         subset = split_dataset(dataset, best_idx, val)
-        # Remove the attribute from header and rows
         reduced_headers = headers[:best_idx] + headers[best_idx+1:]
         reduced_subset = [row[:best_idx] + row[best_idx+1:] for row in subset]
         tree[best_attr][val] = build_tree(reduced_subset, reduced_headers)
 
     return tree
 
+# Predict for a new instance
+def classify(tree, headers, instance):
+    if not isinstance(tree, dict):
+        return tree  # Leaf node
+
+    attr = next(iter(tree))  # Root attribute
+    attr_index = headers.index(attr)
+    value = instance[attr_index]
+
+    if value in tree[attr]:
+        subtree = tree[attr][value]
+        reduced_headers = headers[:attr_index] + headers[attr_index+1:]
+        reduced_instance = instance[:attr_index] + instance[attr_index+1:]
+        return classify(subtree, reduced_headers, reduced_instance)
+    else:
+        return "Unknown"
+
 # Run
 headers, data = load_csv("dataset.csv")
 tree = build_tree(data, headers)
+
 print("Decision Tree:")
 print(tree)
+
+# New instance for prediction
+new_instance = ["13", "35", "Medium", "No", "Fair"]  # Without target
+result = classify(tree, headers[:-1], new_instance)  # Exclude BuysComputer from headers
+print(f"\nPrediction for new instance {new_instance}: {result}")

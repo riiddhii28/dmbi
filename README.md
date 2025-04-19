@@ -26,5 +26,5 @@
   
 ## Dataset Used
 
-- For all classification and clustering tasks, use the provided **dataset.csv** (a simple dataset with columns: ID, Age, Income, Student, CreditRating, BuysComputer).
-- For **Apriori** and **FP-Growth**, use the **items.csv** dataset containing transactional data for association rule mining.
+- For all classification and clustering tasks, **dataset.csv** is used. (a simple dataset with columns: ID, Age, Income, Student, CreditRating, BuysComputer).
+- For **Apriori** and **FP-Growth**, **new_dataset.csv** dataset containing transactional data for association rule mining is used.
